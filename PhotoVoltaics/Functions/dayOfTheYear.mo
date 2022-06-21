@@ -7,7 +7,7 @@ function dayOfTheYear "Determined day of the year based on date"
 protected
   Boolean leapYear "Indicates leap year";
 algorithm
-  leapYear := if mod(year, 4) == 0 then true else false;
+  leapYear := mod(year, 4) == 0 and (not mod(year, 100) == 0 or mod(year, 400) == 0);
   dayOfYear := day;
   dayOfYear := dayOfYear + (if month > 1 then 31 else 0);
   dayOfYear := dayOfYear + (if month > 2 then 28 + (if leapYear then 1 else 0) else 0);
